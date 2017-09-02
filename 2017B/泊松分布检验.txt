@@ -1,0 +1,11 @@
+plot(time, traffic_flow_aver,'*')
+X=traffic_flow_aver; %样本
+alpha=0.05; %置信度5%
+lambda=36; 
+p3 = poisscdf(X,lambda);
+[H3, s3] = kstest(X, [X, p3], alpha);
+if H3 == 0
+disp('该数据源服从泊松分布。')
+else
+disp('该数据源不服从泊松分布。')
+end
